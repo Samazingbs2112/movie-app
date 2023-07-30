@@ -8,3 +8,34 @@ button {
   border-radius: 2px !important;
   
 }
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  }
+
+  input {
+    height: 45px;
+    width: 100%;
+    border: 1px solid grey ;
+    padding-left: 20px;
+  }
+
+  .ant-form-item {
+    margin-bottom: 0px !important
+  }
+
+  input:focus {
+    outline: none;
+    border: 1px solid #18122B ;
+  }
+
+  a {
+    text-decoration: underline !important;
+    color: #18122B;
+  }
+
+  a:hover{
+    color:#18122B;
+  }
