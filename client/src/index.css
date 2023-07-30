@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+button {
+  box-shadow: none !important;
+  height: 45px !important;
+  border-radius: 2px !important;
+  
+}
