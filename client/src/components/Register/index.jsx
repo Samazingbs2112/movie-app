@@ -1,12 +1,27 @@
-import React from 'react'
-import { Button, Form } from 'antd'
-import { Link } from 'react-router-dom'
+import React, { useEffect } from 'react'
+import { Button, Form} from 'antd'
+import { Link, useNavigate } from 'react-router-dom'
+import { RegisterUser } from '../../apis/users'
 
 const Register = () => {
-
-    const onSubmit = (values) => {
-        console.log("success", values);
+    const navigate = useNavigate();
+   const onSubmit = async (values) => {
+        try {
+            const response = await RegisterUser(values);
+            console.log(response);
+            navigate("/login");
+        } catch (error) {
+            console.log(error);
+        }
     }
+    
+    useEffect(() => {
+        if (localStorage.getItem("accessToken")) {
+            navigate("/");
+        }
+    }, []);
+    
+
   return (
     <div className='grid grid-cols-2 h-screen'>
         <div className='bg-primary flex flex-col items-center justify-center'>
@@ -30,17 +45,17 @@ const Register = () => {
                <hr />
                <Form layout='vertical' className='flex flex-col gap-5 mt-5 pt-5' onFinish={onSubmit}>
                <Form.Item label="Username" name="username">
-                    <input />
+                    <input required/>
                 </Form.Item>
                 <Form.Item label="Email" name="email">
-                    <input />
+                    <input required/>
                 </Form.Item>
                 <Form.Item label="Password" name="password">
-                    <input type='password'/>
+                    <input type='password' required/>
                 </Form.Item>
                 <Form.Item label='Confirm Password'
                 name='confirmPassword' >
-                    <input type='password'/>
+                    <input type='password' required/>
                  </Form.Item>   
                 <div className='flex flex-col gap-5'>
                 <Button type='primary' htmlType='submit' block>

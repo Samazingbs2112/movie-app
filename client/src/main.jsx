@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
 import { ConfigProvider } from 'antd'  // for global level use
+import { Provider } from 'react-redux'
+import store from './redux/stores.js'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -13,7 +15,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         colorBorder: '#18122B'
       },
     }}>
-     <App />
+     <Provider store={store}>
+      <App />
+     </Provider>
     </ConfigProvider>
   </React.StrictMode>,
 )

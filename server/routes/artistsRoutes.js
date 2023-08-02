@@ -4,11 +4,8 @@ const authMiddleware = require('../middlewares/authMiddlewares');
 
 
 
-
-router.post('/register', userController.create);
-router.post('/login', userController.login);
-router.get('/current-user',authMiddleware, userController.getCurrentUser);
-
+router.post("/add", authMiddleware, userController.addArtists),
+router.get("/", authMiddleware, userController.getArtists),
 
 
 
